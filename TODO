@@ -1,0 +1,6 @@
+
+	NO HAY SSH EN LA VIRTUAL, se intentó instalar pero queda mal configurado aparentemete ver comentarios en Dockerfile
+
+	traer todos los scripts que pueden variar de la vm
+	mapear directorios de plugins con los de bioplat, para hacer más fácil el deploy!
+	Mientras no haya SSH: Mapear directorios importantes ie /var/log para poder ver el estado de la virtual
