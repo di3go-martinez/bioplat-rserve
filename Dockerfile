@@ -18,7 +18,7 @@ MAINTAINER diego martínez
 #expose 22
 #run /usr/sbin/sshd &
 
-
+run mkdir /tmp/logs
 EXPOSE 6311
 USER r
 WORKDIR /home/r
