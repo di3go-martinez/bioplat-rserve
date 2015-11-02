@@ -4,3 +4,9 @@
 	traer todos los scripts que pueden variar de la vm
 	mapear directorios de plugins con los de bioplat, para hacer más fácil el deploy!
 	Mientras no haya SSH: Mapear directorios importantes ie /var/log para poder ver el estado de la virtual
+
+
+	para armar el dockerfile
+		instalar los siguientes paquetes
+			libcurl3-gnutls
+			libxml2-dev
