@@ -1,5 +1,5 @@
 # Set the base image 
-FROM di3gomartinez/rserve-bioplat-2
+FROM di3gomartinez/rserve-bioplat-3
 MAINTAINER diego martínez
 
 
