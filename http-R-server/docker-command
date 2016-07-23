@@ -1,0 +1,9 @@
+#!/bin/bash
+docker run \
+	-v $(readlink -f webapps):/opt/tomcat/webapps \
+	-p 8090:80  \
+	--restart always \
+	--detach \
+	http-r-server 
+	
+
