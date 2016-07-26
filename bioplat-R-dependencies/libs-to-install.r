@@ -1,8 +1,4 @@
 
-#libs propias
-#install.packages('/r/bioplatR-1.0.tar.gz', repos=NULL, type="source")
-
-
 #libs de terceros
 affy=source("http://bioconductor.org/biocLite.R");biocLite("affy")
 
@@ -30,5 +26,6 @@ survivalROC=install.packages("survivalROC")
 
 install.packages('cgdsr')
 
+install.packages('RColorBrewer')
 
-
+install.packages('gplots')
