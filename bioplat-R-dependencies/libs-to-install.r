@@ -1,5 +1,4 @@
 
-
 #libs de terceros
 affy=source("http://bioconductor.org/biocLite.R");biocLite("affy")
 
@@ -26,5 +25,6 @@ survivalROC=install.packages("survivalROC")
 
 install.packages('cgdsr')
 
+install.packages('RColorBrewer')
 
-
+install.packages('gplots')
