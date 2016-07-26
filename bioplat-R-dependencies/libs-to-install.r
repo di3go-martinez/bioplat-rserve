@@ -12,7 +12,6 @@ inSilicoDb=source("http://www.bioconductor.org/biocLite.R");biocLite("inSilicoDb
 
 limma=source("http://bioconductor.org/biocLite.R");biocLite("limma");biocLite(c("GenomicFeatures", "AnnotationDbi"))
 
-
 hgu133afrmavecs=source("http://bioconductor.org/biocLite.R");biocLite("hgu133afrmavecs")
 
 hgu133acdf=source("http://bioconductor.org/biocLite.R");biocLite("hgu133acdf")
