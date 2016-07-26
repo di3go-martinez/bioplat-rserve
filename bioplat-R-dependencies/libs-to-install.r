@@ -1,8 +1,10 @@
 
 #libs de terceros
-affy=source("http://bioconductor.org/biocLite.R");biocLite("affy")
+affy=source("https://bioconductor.org/biocLite.R");biocLite("affy")
 
-frma=source("http://bioconductor.org/biocLite.R");biocLite("frma")
+frma=source("https://bioconductor.org/biocLite.R");biocLite("frma")
+
+survcomp=source("https://bioconductor.org/biocLite.R");biocLite("survcomp")
 
 survival=install.packages("survival")
 
@@ -27,3 +29,4 @@ install.packages('cgdsr')
 install.packages('RColorBrewer')
 
 install.packages('gplots')
+
