@@ -1,7 +1,4 @@
 
-#libs propias
-#install.packages('/r/bioplatR-1.0.tar.gz', repos=NULL, type="source")
-
 
 #libs de terceros
 affy=source("http://bioconductor.org/biocLite.R");biocLite("affy")
@@ -16,7 +13,6 @@ inSilicoDb=source("http://www.bioconductor.org/biocLite.R");biocLite("inSilicoDb
 
 limma=source("http://bioconductor.org/biocLite.R");biocLite("limma");biocLite(c("GenomicFeatures", "AnnotationDbi"))
 
-survcomp=source("http://bioconductor.org/biocLite.R");biocLite("survcomp")
 
 hgu133afrmavecs=source("http://bioconductor.org/biocLite.R");biocLite("hgu133afrmavecs")
 
