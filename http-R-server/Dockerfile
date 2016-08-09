@@ -15,6 +15,13 @@ run ["mkdir", "/opt/jre/"]
 run ["tar", "xf", "/tmp/jre.tgz","-C","/opt/jre/", "--strip-components=1"]
 run ["rm", "-f", "/tmp/jre.tgz"]
 
+#configuro el directorio de logs
+volume /r/logs/
+run ["rmdir", "/opt/tomcat/logs"]
+run ["ln", "-s", "/r/logs/tomcat-logs", "logs"]
+run ["mv", "logs", "/opt/tomcat/"]
+
+
 add init-rserve.sh /r/init-rserve.sh
 add load-libs.r /r/load-libs.r
 add entrypoint.sh /r/entrypoint.sh
@@ -22,7 +29,7 @@ add entrypoint.sh /r/entrypoint.sh
 copy build/bioplatR-1.0.tar.gz /r/bioplatR.tar.gz
 run ["R", "CMD", "INSTALL", "/r/bioplatR.tar.gz"]
 
-volume /r/logs/
 
 entrypoint ["/r/entrypoint.sh"]
+#para pruebas 
 #cmd ["/bin/bash"]

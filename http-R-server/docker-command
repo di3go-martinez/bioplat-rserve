@@ -1,10 +1,10 @@
 #!/bin/bash
 docker run \
 	-v $(readlink -f webapps):/opt/tomcat/webapps \
-	-v $(readlink -f logs) \
+	-v $(readlink -f logs):/r/logs \
 	-p 8090:80  \
 	--restart always \
 	--detach \
-	http-r-server 
+	http-r-server $@
 	
 

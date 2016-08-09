@@ -7,7 +7,7 @@
 . /lib/lsb/init-functions
 
 ## Variables
-LOGFILE="/var/log/rserve.log"
+LOGFILE="/r/rserve.log"
 ##CONFIGFILE="/etc/Rserv.conf"
 
 
@@ -17,7 +17,7 @@ RCMDSERVE=" CMD Rserve --save --RS-port 6336 --RS-enable-remote"
 DAEMON="/usr/lib/R/bin/Rserve"
 RSCRIPT="/usr/bin/Rscript"
 RLIBS="/r/load-libs.r"
-RLOGFILE="/var/log/rserve.log"
+RLOGFILE=$LOGFILE
 
 
 #test -f $CONFIGFILE || exit 0
