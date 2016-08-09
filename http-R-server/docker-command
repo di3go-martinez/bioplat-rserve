@@ -1,6 +1,7 @@
 #!/bin/bash
 docker run \
 	-v $(readlink -f webapps):/opt/tomcat/webapps \
+	-v $(readlink -f logs) \
 	-p 8090:80  \
 	--restart always \
 	--detach \

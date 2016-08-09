@@ -22,6 +22,7 @@ add entrypoint.sh /r/entrypoint.sh
 copy build/bioplatR-1.0.tar.gz /r/bioplatR.tar.gz
 run ["R", "CMD", "INSTALL", "/r/bioplatR.tar.gz"]
 
+volume /r/logs/
 
 entrypoint ["/r/entrypoint.sh"]
 #cmd ["/bin/bash"]
