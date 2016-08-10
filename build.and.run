@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e 
+
+(cd bioplat-R-dependencies && ./build.sh )
+cd http-R-server && ./build.sh && \
+	./run-http-r-service
+
