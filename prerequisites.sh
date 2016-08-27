@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -e
+
+alias apt-get="apt-get -y"
+
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root" 1>&2
    exit 1
@@ -25,3 +29,5 @@ fi
  service docker start
 
  systemctl enable docker
+
+unalias apt-get
