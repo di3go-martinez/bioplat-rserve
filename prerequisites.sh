@@ -31,3 +31,6 @@ fi
  systemctl enable docker
 
 unalias apt-get
+
+echo "Agregando a bioplat al grupo docker. Es necesario relogin"
+addgroup bioplat docker
