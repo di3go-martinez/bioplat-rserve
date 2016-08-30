@@ -1,6 +1,6 @@
 ##############################################
 ## Service for RServe  
-## 12/09/2015: Testing only ubuntu
+## 12/09/2015: tested on Ubuntu like distros only
 ##############################################
 #!/bin/sh
 
