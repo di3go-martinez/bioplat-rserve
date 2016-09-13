@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#corta ane el primer error
+#corta ante el primer error
 set -e 
 
 export JRE_HOME=/opt/jre/
