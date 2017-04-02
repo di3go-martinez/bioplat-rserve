@@ -1,8 +1,8 @@
 #!/bin/bash
-docker run \
+sudo docker run \
 	-v $(readlink -f webapps):/opt/tomcat/webapps \
 	-v $(readlink -f logs):/r/logs \
-	-p 8090:80  \
+	-p 80:80  \
 	--restart always \
 	--detach \
 	http-r-server $@
