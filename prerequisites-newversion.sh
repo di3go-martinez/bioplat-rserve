@@ -3,8 +3,6 @@
 set -e
 set -u
 
-alias apt-get="apt-get -y"
-
 echo "in progress..."
 exit 1
 
@@ -14,10 +12,10 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 #remuevo versiones con nombres viejos del paquete
-apt-get remove docker docker-engine
+apt-get -y remove docker docker-engine
 
-apt-get update
-apt-get install apt-transport-https ca-certificates curl software-properties-common
+apt-get -y update
+apt-get -y install apt-transport-https ca-certificates curl software-properties-common
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 calculated_key_fingerprint=$(sudo apt-key fingerprint 0EBFCD88 | grep fingerprint | cut -d= -f2)
@@ -26,7 +24,7 @@ DOCKER_KEY_FINGERPRINT=" 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88"
 if [ "$calculated_key_fingerprint" == "$DOCKER_KEY_FINGERPRINT"  ];then
   echo "Apt-key OK"
 else
-  echo "warning apt-key: $calculated_key_fingerprint != $KEY_FINGERPRINT"
+  echo "warning apt-key: $calculated_key_fingerprint is not equal to $KEY_FINGERPRINT"
 fi 
 
 sudo add-apt-repository \
@@ -35,14 +33,14 @@ sudo add-apt-repository \
    stable"
 
 
-apt-get update
+apt-get -y update
 
-apt-get purge lxc-docker
+apt-get -y purge lxc-docker
 
 #necesario para 14.04
-#apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
+#apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
 
-apt-get install docker-ce
+apt-get -y install docker-ce
 
 service docker start
 
@@ -53,7 +51,6 @@ docker run --rm hello-world
 
 docker rmi hello-world
 
-unalias apt-get
 
 echo "Agregando a Bioplat al grupo docker. Es necesario relogin"
 addgroup bioplat docker
