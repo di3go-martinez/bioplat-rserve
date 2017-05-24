@@ -48,6 +48,14 @@ docker run --rm hello-world
 
 docker rmi hello-world
 
+#Creo al usuario bioplat si no existe
+username="bioplat"
+if ! egrep "^$username" /etc/passwd >/dev/null; then
+  password="Bioplat.1"
+  encrypted_password=$(perl -e 'print crypt($ARGV[0], "password-salt")' $password)
+  useradd --create-home --password $encrypted_password $username
+  [ $? -eq 0 ] && echo "User has been added to system!" || echo "Failed to add a user!"
+fi
 
 echo "Agregando a Bioplat al grupo docker. Es necesario relogin"
 addgroup bioplat docker
