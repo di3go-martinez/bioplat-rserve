@@ -21,7 +21,7 @@ DOCKER_KEY_FINGERPRINT=" 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88"
 if [ "$calculated_key_fingerprint" == "$DOCKER_KEY_FINGERPRINT"  ];then
   echo "Apt-key OK"
 else
-  echo "warning apt-key: $calculated_key_fingerprint is not equal to $KEY_FINGERPRINT"
+  echo "warning apt-key: $calculated_key_fingerprint is not equal to $DOCKER_KEY_FINGERPRINT"
 fi 
 
 sudo add-apt-repository \
