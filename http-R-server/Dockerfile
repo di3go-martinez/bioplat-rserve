@@ -12,11 +12,11 @@ copy tomcat-mods/conf/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
 
 RUN \
   apt-get update && \
-  apt-get install -y openjdk-7-jre && \
+  apt-get install -y openjdk-8-jre && \
   rm -rf /var/lib/apt/lists/
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 #FIXME definir link simbólico /opt/jre lo usan los sh revisar
-run ["ln","-s","/usr/lib/jvm/java-7-openjdk-amd64", "/opt/jre"]
+run ["ln","-s","/usr/lib/jvm/java-8-openjdk-amd64", "/opt/jre"]
 
 #configuro el directorio de logs
 volume /r/logs/
