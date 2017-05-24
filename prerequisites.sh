@@ -84,4 +84,4 @@ fi
 cp -r bioplat-rserve /home/$username/
 chown -R $username:$username /home/$username/bioplat-rserve
 
-echo "login con el usuario $username y correr /home/$username/rserve-bioplat/build.and.run.sh"
+echo "login con el usuario $username y correr /home/$username/rserve-bioplat/build.and.run"
