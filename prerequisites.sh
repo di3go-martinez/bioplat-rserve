@@ -1,34 +1,64 @@
 #!/bin/bash
 
 set -e
-
+set -u
 
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root" 1>&2
    exit 1
 fi
 
+#remuevo versiones con nombres viejos del paquete
+apt-get -y remove docker docker-engine
+
 apt-get -y update
-apt-get -y install apt-transport-https ca-certificates
+apt-get -y install apt-transport-https ca-certificates curl software-properties-common
 
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+calculated_key_fingerprint=$(sudo apt-key fingerprint 0EBFCD88 | grep fingerprint | cut -d= -f2)
 
-echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" > /etc/apt/sources.list.d/docker.list
+DOCKER_KEY_FINGERPRINT=" 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88"
+if [ "$calculated_key_fingerprint" == "$DOCKER_KEY_FINGERPRINT"  ];then
+  echo "Apt-key OK"
+else
+  echo "warning apt-key: $calculated_key_fingerprint is not equal to $KEY_FINGERPRINT"
+fi 
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
 
 apt-get -y update
 
 apt-get -y purge lxc-docker
 
-apt-cache policy docker-engine
+#necesario para 14.04
+#apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
 
-apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
-
-apt-get -y install docker-engine
+apt-get -y install docker-ce
 
 service docker start
 
 systemctl enable docker
 
+#Test installed docker
+docker run --rm hello-world
+
+docker rmi hello-world
+
 
 echo "Agregando a Bioplat al grupo docker. Es necesario relogin"
 addgroup bioplat docker
+
+
+#extras
+#docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+/usr/local/bin/docker-compose --version
+
+#bash completion configuration
+curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+
