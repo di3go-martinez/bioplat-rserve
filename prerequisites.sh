@@ -71,7 +71,11 @@ chmod +x /usr/local/bin/docker-compose
 curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
 #muevo el repositorio al home de bioplat
-mv rserve-bioplat /home/$username
+#me muevo al home del repo primero
+cd "$(dirname $0)"
+mv . /home/$username
 chown -R $username:$username /home/$username/rserve-bioplat
+#vuelvo al directorio donde estaba
+cd -
 
 echo "login con el usuario $username y correr /home/$username/rserve-bioplat/build.and.run.sh"
