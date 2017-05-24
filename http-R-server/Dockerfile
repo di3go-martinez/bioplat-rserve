@@ -10,10 +10,13 @@ volume webapps /opt/tomcat/webapps
 copy tomcat-mods/conf/server.xml /opt/tomcat/conf/server.xml
 copy tomcat-mods/conf/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
 
-copy build/jre-7u45-linux-x64.tar.gz /tmp/jre.tgz
-run ["mkdir", "/opt/jre/"]
-run ["tar", "xf", "/tmp/jre.tgz","-C","/opt/jre/", "--strip-components=1"]
-run ["rm", "-f", "/tmp/jre.tgz"]
+RUN \
+  apt-get update && \
+  apt-get install -y openjdk-7-jre && \
+  rm -rf /var/lib/apt/lists/
+ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+#FIXME definir link simbólico /opt/jre lo usan los sh revisar
+run ["ln","-s","/usr/lib/jvm/java-7-openjdk-amd64", "/opt/jre"]
 
 #configuro el directorio de logs
 volume /r/logs/
