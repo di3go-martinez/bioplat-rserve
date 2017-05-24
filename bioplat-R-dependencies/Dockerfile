@@ -2,9 +2,7 @@ from r-base
 maintainer bioplat
 
 run ["apt-get", "update"]
-#para que instale RCurl --> inSilicoDb
-run ["apt-get", "install", "-y", "libcurl4-gnutls-dev", "libxml2-dev"]
-
+run ["apt-get", "install", "-y", "libxml2-dev"]
 
 
 #third dependencies
