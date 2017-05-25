@@ -17,7 +17,7 @@ apt-get -y install apt-transport-https ca-certificates curl software-properties-
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 calculated_key_fingerprint=$(sudo apt-key fingerprint 0EBFCD88 | grep fingerprint | cut -d= -f2)
 
-DOCKER_KEY_FINGERPRINT=" 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88"
+DOCKER_KEY_FINGERPRINT=" 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88"
 if [ "$calculated_key_fingerprint" == "$DOCKER_KEY_FINGERPRINT"  ];then
   echo "Apt-key OK"
 else
