@@ -72,10 +72,16 @@ curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose versio
 
 #muevo el repositorio al home de bioplat
 #me muevo al home del repo primero
-cd "$(dirname $0)"
-mv . /home/$username
-chown -R $username:$username /home/$username/rserve-bioplat
-#vuelvo al directorio donde estaba
-cd -
+cd "$(dirname $(readlink -f $0))"
+#me muevo un paso para arriba para poder mover el repositorio
+cd ..
+#borrar si existe ya el repo
+if [ -e /home/$username/bioplat-rserve ];then
+  rm -ir /home/$username/bioplat-rserve
+fi
+[ $? == 0 ] || exit 1
+#hago cp para poder correr este script de nuevo...
+cp -r bioplat-rserve /home/$username/
+chown -R $username:$username /home/$username/bioplat-rserve
 
 echo "login con el usuario $username y correr /home/$username/rserve-bioplat/build.and.run.sh"
