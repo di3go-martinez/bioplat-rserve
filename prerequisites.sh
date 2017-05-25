@@ -57,8 +57,9 @@ if ! egrep "^$username" /etc/passwd >/dev/null; then
   [ $? -eq 0 ] && echo "User has been added to system!" || echo "Failed to add a user!"
 fi
 
-echo "Agregando a Bioplat al grupo docker. Es necesario relogin"
+echo "Agregando a Bioplat al grupo docker y al grupo sudo. Es necesario relogin"
 addgroup bioplat docker
+addgroup bioplat sudo
 
 
 #extras
@@ -84,4 +85,4 @@ fi
 cp -r bioplat-rserve /home/$username/
 chown -R $username:$username /home/$username/bioplat-rserve
 
-echo "login con el usuario $username y correr /home/$username/rserve-bioplat/build.and.run.sh"
+echo "login con el usuario $username y correr /home/$username/rserve-bioplat/build.and.run"
