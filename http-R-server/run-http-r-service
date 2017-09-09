@@ -1,10 +1,27 @@
-#!/bin/bash
-sudo docker run \
+#!/bin/bash -x
+mode=${1?"indicar mode: prod o dev"}
+
+case $mode in
+   "dev")
+	port=1180
+	sudocmd=""
+	;;
+   "prod")
+	port=80
+	sudocmd="sudo"
+	;;
+   *)
+	echo "$mode not valid" && exit 1
+esac
+	
+$sudocmd docker run \
 	-v $(readlink -f webapps):/opt/tomcat/webapps \
 	-v $(readlink -f logs):/r/logs \
-	-p 80:80  \
+	-v /etc/localtime:/etc/localtime:ro \
+	-p $port:80  \
 	--restart always \
 	--detach \
+ 	--name http-r-server-$mode \
 	http-r-server $@
 	
 
