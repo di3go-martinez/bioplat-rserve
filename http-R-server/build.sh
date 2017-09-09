@@ -11,6 +11,6 @@ function check-file-exists(){
 }
 
 check-file-exists webapps/R4JServer.war
-check-file-exists build/bioplatR-1.0.tar.gz
+check-file-exists build/bioplatR-*.tar.gz
 
 docker build -t http-r-server .
