@@ -2,6 +2,6 @@
 
 
 library(Rserve)
-Rserve(debug=TRUE, port=6336, args="--save --RS-enable-remote")
+Rserve(debug=TRUE, port=6336, args="--save")
 
-option(error=function() NULL)
+#option(error=function() NULL)
