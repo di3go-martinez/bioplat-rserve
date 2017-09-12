@@ -1,4 +1,4 @@
-from r-base
+from r-base:3.4.1
 maintainer bioplat
 
 run ["apt-get", "update"]
