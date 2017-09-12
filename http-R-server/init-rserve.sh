@@ -2,7 +2,7 @@
 ## Service for RServe  
 ## 12/09/2015: tested on Ubuntu like distros only
 ##############################################
-#!/bin/sh
+#!/bin/bash
 
 . /lib/lsb/init-functions
 
@@ -13,7 +13,7 @@ LOGFILE="/r/rserve.log"
 
 # Rserve configs
 RBIN="/usr/bin/R"
-RCMDSERVE=" CMD Rserve --save --RS-port 6336 --RS-enable-remote"
+RCMDSERVE=" CMD Rserve.dbg --save --RS-port 6336 --RS-enable-remote"
 DAEMON="/usr/lib/R/bin/Rserve"
 RSCRIPT="/usr/bin/Rscript"
 RLIBS="/r/load-libs.r"
