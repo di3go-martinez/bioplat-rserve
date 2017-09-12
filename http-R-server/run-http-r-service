@@ -1,5 +1,8 @@
 #!/bin/bash -x
-mode=${1?"indicar mode: prod o dev"}
+
+set -e
+
+mode=${1?"indicar modo: prod o dev"}
 
 case $mode in
    "dev")
@@ -15,13 +18,15 @@ case $mode in
 esac
 	
 $sudocmd docker run \
-	-v $(readlink -f webapps):/opt/tomcat/webapps \
-	-v $(readlink -f logs):/r/logs \
-	-v /etc/localtime:/etc/localtime:ro \
-	-p $port:80  \
+	--volume $(readlink -f webapps):/opt/tomcat/webapps \
+	--volume $(readlink -f logs-$mode):/r/logs \
+	--volume /etc/localtime:/etc/localtime:ro \
+	--publish $port:80  \
 	--restart always \
 	--detach \
  	--name http-r-server-$mode \
 	http-r-server $@
 	
 
+echo "^C para cortar el log sin terminar el container"
+docker logs -f http-r-server-$mode
