@@ -1,4 +1,4 @@
-from bioplat-r-dependencies:r3.4.1
+from bioplat-r-dependencies
 maintainer bioplat
 
 RUN apt-get update 
@@ -19,7 +19,7 @@ copy tomcat-mods/conf/server.xml /opt/tomcat/conf/server.xml
 copy tomcat-mods/conf/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
 
 #configuro el directorio de logs
-volume /r/logs/
+volume /r/logs/tomcat-logs
 run rmdir /opt/tomcat/logs && \
     ln -s /r/logs/tomcat-logs logs && \
     mv logs /opt/tomcat/
@@ -32,7 +32,7 @@ add start.r /r/init-rserve.sh
 add load-libs.r /r/load-libs.r
 add entrypoint.sh /r/entrypoint.sh
 
-copy build/bioplatR-1.0.tar.gz /r/bioplatR.tar.gz
+copy build/bioplatR-1.2.tar.gz /r/bioplatR.tar.gz
 run R CMD INSTALL /r/bioplatR.tar.gz
 
 
