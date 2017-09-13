@@ -16,7 +16,7 @@ hgu133afrmavecs=source("http://bioconductor.org/biocLite.R");biocLite("hgu133afr
 
 hgu133acdf=source("http://bioconductor.org/biocLite.R");biocLite("hgu133acdf")
 
-Rserve=install.packages("Rserve")
+Rserve=install.packages('Rserve',,'http://www.rforge.net/')
 
 R6=install.packages("R6")
 
