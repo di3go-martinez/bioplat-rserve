@@ -19,14 +19,13 @@ esac
 	
 $sudocmd docker run \
 	--volume $(readlink -f webapps):/opt/tomcat/webapps \
-	--volume $(readlink -f logs-$mode):/r/logs \
+	--volume "$(readlink -f logs-$mode)":/r/logs \
 	--volume /etc/localtime:/etc/localtime:ro \
 	--publish $port:80  \
 	--restart always \
 	--detach \
  	--name http-r-server-$mode \
-	http-r-server $@
+	http-r-server:${mode/dev/latest} $@
 	
-
 echo "^C para cortar el log sin terminar el container"
 docker logs -f http-r-server-$mode
