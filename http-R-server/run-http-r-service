@@ -18,9 +18,9 @@ case $mode in
 esac
 	
 $sudocmd docker run \
-	--volume $(readlink -f webapps):/opt/tomcat/webapps \
+	--volume $(readlink -f webapps-$mode):/opt/tomcat/webapps \
 	--volume "$(readlink -f logs-$mode)":/r/logs \
-	--volume /etc/localtime:/etc/localtime:ro \
+	--volume /etc/timezone:/etc/timezone:ro \
 	--publish $port:80  \
 	--restart always \
 	--detach \
