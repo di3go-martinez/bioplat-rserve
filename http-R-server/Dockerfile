@@ -10,7 +10,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 #FIXME definir link simbólico /opt/jre lo usan los sh revisar
 run ln -s /usr/lib/jvm/java-8-openjdk-amd64 /opt/jre
 
-run curl https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.65/bin/apache-tomcat-7.0.65.tar.gz -o /tmp/tomcat.tgz && \
+run curl https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.81/bin/apache-tomcat-7.0.81.tar.gz -o /tmp/tomcat.tgz && \
     mkdir /opt/tomcat/ && \
     tar xf /tmp/tomcat.tgz -C /opt/tomcat/ --strip-components=1 && \
     rm -f /tmp/tomcat.tgz 
