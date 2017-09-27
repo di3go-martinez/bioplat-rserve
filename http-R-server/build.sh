@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mode=${1?"Falta el mode dev|prod"}
+
 set -e
 
 function check-file-exists(){
@@ -10,7 +12,8 @@ function check-file-exists(){
 	fi
 }
 
-check-file-exists webapps/R4JServer.war
+check-file-exists webapps-$mode/R4JServer.war
 check-file-exists build/bioplatR-*.tar.gz
 
-docker build -t http-r-server .
+docker build \
+	-t http-r-server:${mode//dev/latest} .
