@@ -24,8 +24,8 @@ $sudocmd docker run \
 	--publish $port:80  \
 	--restart always \
 	--detach \
- 	--name http-r-server-$mode \
+ 	--name http-r-server-${mode} \
 	http-r-server:${mode/dev/latest} $@
 	
 echo "^C para cortar el log sin terminar el container"
-docker logs -f http-r-server-$mode
+docker logs -f http-r-server-${mode}
