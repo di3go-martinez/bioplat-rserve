@@ -32,7 +32,12 @@ add start.r /r/init-rserve.sh
 add load-libs.r /r/load-libs.r
 add entrypoint.sh /r/entrypoint.sh
 
-copy build/bioplatR-1.2.tar.gz /r/bioplatR.tar.gz
+#esto no sirve para produccion!
+copy build/bioplatR-dev.tar.gz /r/bioplatR.tar.gz
+
+#produccion
+#copy build/bioplatR-prod.tar.gz /r/bioplatR.tar.gz
+
 run R CMD INSTALL /r/bioplatR.tar.gz
 
 
