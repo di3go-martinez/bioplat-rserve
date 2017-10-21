@@ -1,8 +1,10 @@
 #!/bin/bash
 
+mode=${1?"Falta parámetro dev|prod"}
+
 set -e 
 
-(cd bioplat-R-dependencies && ./build.sh )
-cd http-R-server && ./build.sh && \
-	./run-http-r-service
+(cd bioplat-R-dependencies && ./build.sh $mode )
+cd http-R-server && ./build.sh $mode && \
+	./run-http-r-service $mode
 
