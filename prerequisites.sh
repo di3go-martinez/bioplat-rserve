@@ -1,15 +1,16 @@
 #!/bin/bash
 
-set -e
-set -u
 
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root" 1>&2
    exit 1
 fi
 
-#remuevo versiones con nombres viejos del paquete
+#remuevo versiones con nombres viejos del paquete (pueden no existir)
 apt-get -y remove docker docker-engine
+
+set -e
+set -u
 
 apt-get -y update
 apt-get -y install apt-transport-https ca-certificates curl software-properties-common
