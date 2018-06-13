@@ -8,6 +8,7 @@ fi
 
 #remuevo versiones con nombres viejos del paquete (pueden no existir)
 apt-get -y remove docker docker-engine
+apt-get -y purge lxc-docker
 
 set -e
 set -u
@@ -32,8 +33,6 @@ sudo add-apt-repository \
 
 
 apt-get -y update
-
-apt-get -y purge lxc-docker
 
 #necesario para 14.04
 #apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
